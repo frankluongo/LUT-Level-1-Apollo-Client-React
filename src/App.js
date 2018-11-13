@@ -12,7 +12,7 @@ const client = new ApolloClient({
 // Running Our Query
 const POSTS_QUERY = gql`
   query allPosts {
-    postz {
+    posts {
       id
       title
       body
