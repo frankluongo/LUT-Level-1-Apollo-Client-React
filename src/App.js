@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import { ApolloProvider } from "react-apollo";
 import ApolloClient from 'apollo-boost';
-import { ApolloProvider, Query } from "react-apollo";
-import gql from 'graphql-tag';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+
+import Post from './Posts/Post';
+import Posts from './Posts/Posts';
+
+
 import './App.css';
 
 // Connecting to GraphQL API
@@ -9,36 +14,21 @@ const client = new ApolloClient({
   uri: 'https://api-useast.graphcms.com/v1/cjodhanpb78xp01dg0edo0qkt/master'
 });
 
-// Running Our Query
-const POSTS_QUERY = gql`
-  query allPosts {
-    posts {
-      id
-      title
-      body
-    }
-  }
-`;
-
-// client.query({
-//   query: testQuery
-// }).then(res => console.log(res));
-
 class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-      <div className="App">
-        <header className="App-header">
-          <Query query={POSTS_QUERY}>
-            {({ data, loading}) => {
-              if (loading) return 'Loading...';
-              const { posts } = data;
-              return posts.map(post => <h1 key={post.id} >{post.title}</h1>);
-            }}
-          </Query>
-        </header>
-      </div>
+      <Router>
+        <div className="App">
+          <header className="App-header">
+            Content
+          </header>
+          <Switch>
+            <Route path="/post/:id" component={Post} />
+            <Route exact path="/" component={Posts} />
+          </Switch>
+        </div>
+      </Router>
       </ApolloProvider>
     );
   }
