@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from 'apollo-boost';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Post from './Posts/Post';
 import Posts from './Posts/Posts';
