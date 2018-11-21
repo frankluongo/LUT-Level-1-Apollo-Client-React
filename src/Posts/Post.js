@@ -4,16 +4,6 @@ import gql from 'graphql-tag';
 
 import UpdatePost from './UpdatePost';
 
-const POST_QUERY = gql`
-  query post($id: ID!) {
-    post (where: { id: $id}) {
-      id
-      title
-      body
-    }
-  }
-`;
-
 export default class Post extends Component {
   render() {
     const { match } = this.props;
@@ -25,21 +15,24 @@ export default class Post extends Component {
         }}>
         {({data, loading}) => {
           if (loading) return 'loading...'
-          const { post } = data;
+          const { post, isEditMode } = data;
           return (
             <div>
-              <section>
-                <h1>{post.title}</h1>
-                <p>
-                  {post.body}
-                </p>
-              </section>
-              <section>
+              {isEditMode ? (
+                <section>
                 <h1>Edit Post</h1>
                 <UpdatePost
                   post={post}
                 />
               </section>
+              ) : (
+                <section>
+                  <h1>{post.title}</h1>
+                  <p>
+                    {post.body}
+                  </p>
+                </section>
+              )}
             </div>
           )
         }}
@@ -47,3 +40,14 @@ export default class Post extends Component {
     )
   }
 }
+
+const POST_QUERY = gql`
+  query post($id: ID!) {
+    post (where: { id: $id}) {
+      id
+      title
+      body
+    }
+    isEditMode @client
+  }
+`;

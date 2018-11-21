@@ -8,12 +8,18 @@ import Post from './Posts/Post';
 import Posts from './Posts/Posts';
 import NewPost from './Posts/NewPost';
 
-
 import './App.css';
 
-// Connecting to GraphQL API
+const defaultState = {
+  isEditMode: false
+}
+
 const client = new ApolloClient({
-  uri: 'https://api-useast.graphcms.com/v1/cjodhanpb78xp01dg0edo0qkt/master'
+  uri: 'https://api-useast.graphcms.com/v1/cjodhanpb78xp01dg0edo0qkt/master',
+  clientState: {
+    defaults: defaultState,
+    resolvers: {}
+  }
 });
 
 class App extends Component {
