@@ -1,5 +1,33 @@
+:root {
+  --header-bg: #333333;
+  --link-color: #48c46d;
+  --white: #f8f8f8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+form {
+  margin: 0 auto;
+  max-width: 640px;
+  width: 90%;
+}
+
+input,
+textarea {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+
 .App-header {
-  background-color: #282c34;
+  background-color: var(--header-bg);
   min-height: 10vh;
   display: flex;
   flex-direction: column;
@@ -9,11 +37,34 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.App-header a {
+  color: var(--white);
 }
 
-a {
-  color: #48c46d;
-  text-decoration: none;
+.button {
+  display: inline-block;
+  margin: 16px auto;
+  padding: 16px 32px;
+
+  background-color: var(--header-bg);
+  border-radius: 4px;
+}
+
+.layout-wrapper {
+  margin: 0 auto;
+  max-width: 1170px;
+  padding: 16px;
+}
+
+.posts-listing {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.posts-listing li {
+  margin-bottom: 16px;
+
+  font-size: 24px;
 }

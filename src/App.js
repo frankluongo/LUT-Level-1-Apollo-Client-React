@@ -3,6 +3,7 @@ import { ApolloProvider } from "react-apollo";
 import ApolloClient from 'apollo-boost';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
+import LayoutWrapper from './Components/LayoutWrapper';
 import Post from './Posts/Post';
 import Posts from './Posts/Posts';
 import NewPost from './Posts/NewPost';
@@ -26,12 +27,13 @@ class App extends Component {
             GraphQL
           </Link>
           </header>
-          <Link to={'/post/new'}>New Post</Link>
-          <Switch>
-            <Route exact path="/post/new" component={NewPost} />
-            <Route path="/post/:id" component={Post} />
-            <Route exact path="/" component={Posts} />
-          </Switch>
+          <LayoutWrapper>
+            <Switch>
+              <Route exact path="/post/new" component={NewPost} />
+              <Route path="/post/:id" component={Post} />
+              <Route exact path="/" component={Posts} />
+            </Switch>
+          </LayoutWrapper>
         </div>
       </Router>
       </ApolloProvider>
