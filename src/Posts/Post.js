@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Query } from "react-apollo";
 import gql from 'graphql-tag';
 
+import UpdatePost from './UpdatePost';
+
 const POST_QUERY = gql`
   query post($id: ID!) {
     post (where: { id: $id}) {
@@ -26,10 +28,18 @@ export default class Post extends Component {
           const { post } = data;
           return (
             <div>
-              <h1>{post.title}</h1>
-              <p>
-                {post.body}
-              </p>
+              <section>
+                <h1>{post.title}</h1>
+                <p>
+                  {post.body}
+                </p>
+              </section>
+              <section>
+                <h1>Edit Post</h1>
+                <UpdatePost
+                  post={post}
+                />
+              </section>
             </div>
           )
         }}
