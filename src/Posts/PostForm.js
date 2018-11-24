@@ -8,7 +8,8 @@ export default class PostForm extends Component {
   }
 
   static defaultProps = {
-    post: {}
+    post: {},
+    onSuccess: () => null
   }
 
   state = {
@@ -24,7 +25,7 @@ export default class PostForm extends Component {
   }
 
   render() {
-    const { onSubmit } = this.props;
+    const { onSubmit, onSuccess } = this.props;
     const { title, body, id } = this.state;
     return (
       <form onSubmit={(event) => {
@@ -36,10 +37,7 @@ export default class PostForm extends Component {
             id
           }
         }).then(() => {
-          this.setState({
-            title: '',
-            body: ''
-          })
+          onSuccess();
         }).catch(error => console.log(error));
       }}>
         <input
