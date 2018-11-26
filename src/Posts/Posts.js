@@ -41,14 +41,3 @@ export default class Posts extends Component {
     )
   }
 }
-
-
-// const POSTS_QUERY = gql`
-//   query allPosts($skip: Int) {
-//     posts(orderBy: createdAt_DESC, first: 10, skip: $skip) {
-//       id
-//       title
-//       body
-//     }
-//   }
-// `;
