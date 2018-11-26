@@ -39,6 +39,7 @@ export default class Post extends Component {
                       id: post.id,
                       check: !post.check
                     }}
+
                     optimisticResponse={{
                       __typename: 'Mutation',
                       updatePost: {
@@ -46,6 +47,7 @@ export default class Post extends Component {
                         check: !post.check,
                       }
                     }}
+
                     update={(cache, { data: {updatePost } }) => {
                       const data = cache.readQuery({
                         query: POST_QUERY,
